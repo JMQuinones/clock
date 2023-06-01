@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(48, 58, 58);
+    color: white;
+}
+.buttons-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .buttons-flex .btn {
+    font-weight: bold;
+    margin: 10px 25px;
+  }
+
+  .time-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    max-width: min-content;    
+    margin: auto;
+    padding: 5px;
+    aspect-ratio : 1 / 1;
+    border-radius: 50%;
+  }
+
+  .stopped{
+    background-color: #0d6efd;
+  }
+  .running{
+    background-color: rgb(67, 114, 114);
+  }

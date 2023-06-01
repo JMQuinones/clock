@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRef } from "react";
+import "./Clock.css";
 function Clock() {
   const [breakLength, setBreakLength] = useState(300);
   const [sessionLength, setSessionLength] = useState(1500);
@@ -103,7 +104,6 @@ function Clock() {
 
   const runTimer = () => {
     const timerState = running;
-    console.log(timerState);
     if (timerState) {
       //clearInterval(countDownInterval);
       resetInterval();
@@ -117,7 +117,6 @@ function Clock() {
   };
 
   const countDown = () => {
-    console.log(timeLeft);
     if (breakLength == 0 && sessionLength == 0) {
       resetInterval();
       setRunning(false);
@@ -143,11 +142,12 @@ function Clock() {
   };
 
   return (
-    <div>
+    <div className="fluid-container mt-5">
       <div>
-        {timeLeft}
-        {timeRef.current}
-        <h1 id="time-left">
+        <h1
+          id="time-left"
+          className={!running ? "time-left stopped" : "time-left running"}
+        >
           {("" + getFormattedTime(timeLeft).mins).length == 1
             ? "0" + getFormattedTime(timeLeft).mins
             : getFormattedTime(timeLeft).mins}
@@ -156,7 +156,7 @@ function Clock() {
             ? "0" + getFormattedTime(timeLeft).secs
             : getFormattedTime(timeLeft).secs}
         </h1>
-        <div className="text-center timer">
+        <div>
           <h3 id="timer-label">{mode}</h3>
           <button
             className={!running ? "btn btn-primary" : "btn btn-danger"}
