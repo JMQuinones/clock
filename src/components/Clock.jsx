@@ -6,16 +6,12 @@ function Clock() {
   const [sessionLength, setSessionLength] = useState(1500);
   const [mode, setMode] = useState("Session");
   const [running, setRunning] = useState(false);
-  /* const [timer, setTimer] = useState({
-    min: 25,
-    sec: 0,
-  });*/
-  //const [mins, setMins] = useState(25);
+
   const [timeLeft, setTimeLeft] = useState(1500);
-  const [secs, setSecs] = useState(0);
+
   const intervalRef = useRef(null);
   const timeRef = useRef(1500);
-  //let countDownInterval = null;
+
   const resetInterval = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = null;
@@ -27,7 +23,6 @@ function Clock() {
       setMode("Session");
     }
     resetInterval();
-    //clearInterval(countDownInterval);
   };
   const handleBreakDecrement = () => {
     if (breakLength > 60) {
@@ -36,7 +31,6 @@ function Clock() {
       setMode("Session");
     }
     resetInterval();
-    //clearInterval(countDownInterval);
   };
 
   const handleSessionIncrement = () => {
@@ -44,15 +38,11 @@ function Clock() {
       setSessionLength(sessionLength + 60);
       setTimeLeft(timeLeft + 60);
       timeRef.current = timeRef.current + 60;
-      /*setTimer({
-        min: sessionLength + 1,
-        sec: 0,
-      });*/
+
       setRunning(false);
       setMode("Session");
     }
 
-    //clearInterval(countDownInterval);
     resetInterval();
   };
   const handleSessionDecrement = () => {
@@ -60,15 +50,11 @@ function Clock() {
       setSessionLength(sessionLength - 60);
       setTimeLeft(sessionLength - 60);
       timeRef.current = sessionLength - 60;
-      /*setTimer({
-        min: sessionLength - 1,
-        sec: 0,
-      });*/
+
       setRunning(false);
       setMode("Session");
     }
 
-    //clearInterval(countDownInterval);
     resetInterval();
   };
 
@@ -88,28 +74,19 @@ function Clock() {
     setSessionLength(1500);
     setTimeLeft(1500);
     timeRef.current = 1500;
-    /*setTimer({
-      min: 25,
-      sec: 0,
-    });*/
+
     setRunning(false);
     setMode("Session");
-    //console.log("countDownInterval", countDownInterval);
-    //clearInterval(countDownInterval);
+
     resetInterval();
   };
-  /*const changeMode = (mode) => {
-    setMode(mode);
-  };*/
 
   const runTimer = () => {
     const timerState = running;
     if (timerState) {
-      //clearInterval(countDownInterval);
       resetInterval();
       setRunning(false);
     } else {
-      //countDownInterval = setInterval(countDown, 1000);
       intervalRef.current = setInterval(countDown, 1000);
 
       setRunning(true);
